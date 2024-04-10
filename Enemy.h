@@ -23,6 +23,6 @@ public:
     void Release() override;
 
     //Šî€‚Ì“G‚ÌxÀ•W‚ğ‚Æ‚é
-    int GetFirstEnemyPosition(int _xpos);
+    void GetFirstEnemyPosition(int _xpos);
 };
 

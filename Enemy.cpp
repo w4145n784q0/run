@@ -40,7 +40,7 @@ void Enemy::Release()
 {
 }
 
-int Enemy::GetFirstEnemyPosition(int _xpos)
+void Enemy::GetFirstEnemyPosition(int _xpos)
 {
 	
 }
