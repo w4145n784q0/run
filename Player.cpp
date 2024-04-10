@@ -21,8 +21,6 @@ void Player::Initialize()
 
 void Player::Update()
 {
-	XMVECTOR move{ 0,0,0,0 };//移動ベクトル　移動先
-
 	/*if (Input::IsKey(DIK_UP))
 	{
 		move = XMVECTOR{ 0,0,1,0 };
@@ -63,5 +61,6 @@ void Player::Release()
 
 void Player::OnCollision(GameObject* pTarget)
 {
-	//KillMe();
+	//KillMe(); あとで
+
 }

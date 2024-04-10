@@ -4,7 +4,7 @@ class Enemy :
     public GameObject
 {
     int hModel_;
-    float time_;
+    int firstpos_;
 public:
     //コンストラクタ
     //引数：parent  親オブジェクト（SceneManager）
@@ -22,7 +22,7 @@ public:
     //開放
     void Release() override;
 
-    //
-    void Timer();
+    //基準の敵のx座標をとる
+    int GetFirstEnemyPosition(int _xpos);
 };
 

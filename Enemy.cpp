@@ -3,7 +3,7 @@
 #include "Engine/SphereCollider.h"
 
 Enemy::Enemy(GameObject* parent)
-	:GameObject(parent, "Enemy"), hModel_(-1),time_(2)
+	:GameObject(parent, "Enemy"), hModel_(-1)
 {
 }
 
@@ -14,7 +14,7 @@ void Enemy::Initialize()
 
 	int EnemyposX = rand() % 3;
 	transform_.position_ = XMFLOAT3(EnemyposX-1, 0.5, 10);
-	//transform_.scale_ = XMFLOAT3(2.0f, 2.0f, 2.0f);
+	GetFirstEnemyPosition(transform_.position_.x);
 	transform_.rotate_.y = 180.0f;
 
 	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), 1.0f);
@@ -40,8 +40,7 @@ void Enemy::Release()
 {
 }
 
-//void Enemy::Timer()
-//{
-//	time
-//	if()
-//}
+int Enemy::GetFirstEnemyPosition(int _xpos)
+{
+	
+}

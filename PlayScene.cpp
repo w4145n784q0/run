@@ -2,6 +2,7 @@
 #include"Player.h"
 #include"Stage.h"
 #include"Enemy.h"
+#include"Engine/Input.h"
 
 PlayScene::PlayScene(GameObject* parent)
 	:GameObject(parent, "PlayScene"),inittimer_(0)
@@ -10,20 +11,21 @@ PlayScene::PlayScene(GameObject* parent)
 
 void PlayScene::Initialize()
 {
-	inittimer_ += 0.5;
 	Instantiate<Player>(this);
 	Instantiate<Stage>(this);
-	if (inittimer_ > 1.0)
-	{
-		Instantiate<Enemy>(this);
-		inittimer_ = 0;
-	}
-		
-	
 }
 
 void PlayScene::Update()
 {
+	
+	if (inittimer_ > 1.0)
+	{
+		Enemy *pEnemy = Instantiate<Enemy>(this);
+
+		inittimer_ = 0;
+
+	}
+	inittimer_ += 0.01;
 }
 
 void PlayScene::Draw()
