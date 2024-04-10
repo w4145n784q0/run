@@ -4,6 +4,8 @@
 //テストシーンを管理するクラス
 class TestScene : public GameObject
 {
+	float EnemyInstantiateTime_;
+	bool TimerOver_;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
@@ -20,4 +22,12 @@ public:
 
 	//開放
 	void Release() override;
+
+	//
+	void TimeCount();
+
+	bool IsTimeOver();
+
+	bool GetTimeOver(bool _timerOver) { TimerOver_ = _timerOver; }
+
 };

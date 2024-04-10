@@ -1,14 +1,13 @@
 #pragma once
 #include "Engine/GameObject.h"
-class Enemy :
+class PlayScene :
     public GameObject
 {
-    int hModel_;
-    float time_;
+    float inittimer_;
 public:
     //コンストラクタ
     //引数：parent  親オブジェクト（SceneManager）
-    Enemy(GameObject* parent);
+    PlayScene(GameObject* parent);
 
     //初期化
     void Initialize() override;
@@ -21,8 +20,5 @@ public:
 
     //開放
     void Release() override;
-
-    //
-    void Timer();
 };
 

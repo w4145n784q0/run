@@ -6,6 +6,7 @@
 //コンストラクタ
 TestScene::TestScene(GameObject * parent)
 	: GameObject(parent, "TestScene")
+	,EnemyInstantiateTime_(1),TimerOver_(true)
 {
 }
 
@@ -14,7 +15,11 @@ void TestScene::Initialize()
 {
 	Instantiate<Player>(this);
 	Instantiate<Stage>(this);
-	Instantiate<Enemy>(this);
+	if (IsTimeOver())
+	{ 
+		Instantiate<Enemy>(this);
+	}
+	
 }
 
 //更新
@@ -31,3 +36,33 @@ void TestScene::Draw()
 void TestScene::Release()
 {
 }
+
+void TestScene::TimeCount()
+{
+	EnemyInstantiateTime_ -= 1 / 60;
+	if (EnemyInstantiateTime_ < 0)
+	{
+		EnemyInstantiateTime_ = 0;
+		TimerOver_ = true;
+	}
+}
+
+bool TestScene::IsTimeOver()
+{
+	if (TimerOver_) {
+		return true;
+		EnemyInstantiateTime_ = 1;
+	}
+	return false;
+}
+
+
+
+	/*if (EnemyInstantiateTime_ < 0)
+	{
+		EnemyInstantiateTime_ = 2;
+	}
+	else
+	{
+		EnemyInstantiateTime_ -= 1;
+	}*/
