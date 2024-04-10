@@ -4,6 +4,10 @@ class PlayScene :
     public GameObject
 {
     float inittimer_;
+    signed int StandardEnemyPosX_;
+    signed int SecondEnemyPos_;
+    int ThroughCount_;
+
 public:
     //コンストラクタ
     //引数：parent  親オブジェクト（SceneManager）

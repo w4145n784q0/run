@@ -11,10 +11,8 @@ void Enemy::Initialize()
 {
 	hModel_ = Model::Load("models\\Player.fbx");
 	assert(hModel_ >= 0);
-
-	int EnemyposX = rand() % 3;
-	transform_.position_ = XMFLOAT3(EnemyposX-1, 0.5, 10);
-	GetFirstEnemyPosition(transform_.position_.x);
+	
+	FirstEnemyPosition(transform_.position_.x);
 	transform_.rotate_.y = 180.0f;
 
 	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), 1.0f);
@@ -23,6 +21,8 @@ void Enemy::Initialize()
 
 void Enemy::Update()
 {
+	
+
 	transform_.position_.z -= 0.1;
 	if (transform_.position_.z <= -4.0)
 	{
@@ -40,7 +40,7 @@ void Enemy::Release()
 {
 }
 
-void Enemy::GetFirstEnemyPosition(int _xpos)
+void Enemy::FirstEnemyPosition(int _xpos)
 {
-	
+	firstpos_ = _xpos;
 }

@@ -5,6 +5,7 @@ class Enemy :
 {
     int hModel_;
     int firstpos_;
+   // float EnemySpeed_;
 public:
     //コンストラクタ
     //引数：parent  親オブジェクト（SceneManager）
@@ -23,6 +24,9 @@ public:
     void Release() override;
 
     //基準の敵のx座標をとる
-    void GetFirstEnemyPosition(int _xpos);
+    void FirstEnemyPosition(int _xpos);
+
+    int GetFirstpos_() { return firstpos_; }
+   // int ThroughCountUp() { ThroughCount_++; }
 };
 
