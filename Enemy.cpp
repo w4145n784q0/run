@@ -5,7 +5,7 @@
 
 
 Enemy::Enemy(GameObject* parent)
-	:GameObject(parent, "Enemy"), hModel_(-1),EnemySpeed_(0)
+	:GameObject(parent, "Enemy"), hModel_(-1),ps_(nullptr), EnemySpeed_(0)
 {
 }
 
@@ -21,7 +21,7 @@ void Enemy::Initialize()
 
 void Enemy::Update()
 {
-	transform_.position_.z -= EnemySpeed_;
+	transform_.position_.z -= EnemySpeed_;//playScene‚Å“G‚Ì‘¬‚³‚ðƒZƒbƒg
 	if (transform_.position_.z <= -4.5)
 	{
 		KillMe();

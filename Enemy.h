@@ -6,7 +6,6 @@ class Enemy :
     public GameObject
 {
     int hModel_;
-    int firstpos_;
     PlayScene* ps_;
     float EnemySpeed_;
 public:

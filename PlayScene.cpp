@@ -8,7 +8,7 @@
 PlayScene::PlayScene(GameObject* parent)
 	:GameObject(parent, "PlayScene"),inittimer_(0),
 	ThroughCount_(0),EnemySpeedSet_(0.1),
-	EnemyInitTime_(0.01)
+	EnemyInitTime_(0.01),pText(nullptr), pText2(nullptr), Speedphase_(1)
 {
 }
 
@@ -16,19 +16,29 @@ void PlayScene::Initialize()
 {
 	Instantiate<Player>(this);
 	Instantiate<Stage>(this);
+	pText = new Text;
+	pText->Initialize();
+	pText2 = new Text;
+	pText2->Initialize();
 }
 
 void PlayScene::Update()
 {
-
 	if (inittimer_ > 1.0)
 	{
 		StandardEnemyPosX_ = rand() % 3 - 1;
+
+		//StandardEnemyPosX_を基準位置として、
+		//SecondEnemyPos_にもう一体の敵を出す
 		switch (StandardEnemyPosX_)
 		{
+
+		//発生位置が-1なら1か2にもう一体を出現
 		case -1:
 			SecondEnemyPos_ = rand() % 2;
 			break;
+
+		//発生位置が0なら-1か1にもう一体を出現
 		case 0:
 			if (rand() % 2 == 0)
 			{
@@ -39,6 +49,8 @@ void PlayScene::Update()
 				SecondEnemyPos_ = 1;
 			}
 			break;
+
+		//発生位置が1なら-1か0にもう一体を出現
 		case 1:
 			SecondEnemyPos_ = rand() % 2 - 1;
 			break;
@@ -49,9 +61,10 @@ void PlayScene::Update()
 		if (ThroughCount_ > 0 && ThroughCount_ % 5 == 0)//5の倍数になったらスピードあげる
 		{
 			EnemySpeedSet_ += 0.02;
+			Speedphase_ += 1;
 		}
 
-		if (ThroughCount_ > 0 && ThroughCount_ % 10 == 0)
+		if (ThroughCount_ > 0 && ThroughCount_ % 10 == 0)//10の倍数になったら敵の発生間隔あげる
 		{
 			EnemyInitTime_ += 0.005;
 		}
@@ -64,7 +77,7 @@ void PlayScene::Update()
 		pEnemy2->SetSpeed(EnemySpeedSet_);
 
 		ThroughCount_++;
-		inittimer_ = 0;
+		inittimer_ = 0;//発生までのタイマーをリセット
 	}
 	
 	if (FindObject("Player") == nullptr)//Player死亡でシーン遷移
@@ -78,6 +91,8 @@ void PlayScene::Update()
 
 void PlayScene::Draw()
 {
+	pText->Draw(160, 30, Speedphase_);
+	pText2->Draw(30, 30, "Level: ");
 }
 
 void PlayScene::Release()

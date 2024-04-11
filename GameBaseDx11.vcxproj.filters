@@ -27,6 +27,12 @@
     <Filter Include="PlayScene">
       <UniqueIdentifier>{bb08f50a-365c-41b8-89f2-7d72ac7a9fd6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TitleScene">
+      <UniqueIdentifier>{751f7023-b5b6-4a83-8b61-061ea64efbdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameOverScene">
+      <UniqueIdentifier>{0036b309-510d-46dd-8c99-66389645b676}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\BoxCollider.cpp">
@@ -103,7 +109,6 @@
       <Filter>PlayScene</Filter>
     </ClCompile>
     <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="Enemy.cpp">
       <Filter>PlayScene</Filter>
     </ClCompile>
@@ -113,7 +118,12 @@
     <ClCompile Include="Stage.cpp">
       <Filter>PlayScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameOverScene.cpp" />
+    <ClCompile Include="GameOverScene.cpp">
+      <Filter>GameOverScene</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>TitleScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -190,7 +200,6 @@
       <Filter>PlayScene</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h" />
-    <ClInclude Include="TitleScene.h" />
     <ClInclude Include="Enemy.h">
       <Filter>PlayScene</Filter>
     </ClInclude>
@@ -200,7 +209,12 @@
     <ClInclude Include="Stage.h">
       <Filter>PlayScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameOverScene.h" />
+    <ClInclude Include="GameOverScene.h">
+      <Filter>GameOverScene</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>TitleScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

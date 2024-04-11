@@ -1,5 +1,7 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include"Engine/Text.h"
+
 class PlayScene :
     public GameObject
 {
@@ -9,7 +11,9 @@ class PlayScene :
     int ThroughCount_;
     float EnemySpeedSet_;
     float EnemyInitTime_;
-
+    int Speedphase_;
+    Text* pText;
+    Text* pText2;
 public:
     //コンストラクタ
     //引数：parent  親オブジェクト（SceneManager）
