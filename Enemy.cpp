@@ -13,10 +13,7 @@ void Enemy::Initialize()
 {
 	hModel_ = Model::Load("models\\Player.fbx");
 	assert(hModel_ >= 0);
-	
-	//FirstEnemyPosition(transform_.position_.x);
 	transform_.rotate_.y = 180.0f;
-	//SetSpeed(ps_->GetEnemySpeed());
 
 	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), 0.5f);
 	AddCollider(collision);
@@ -25,7 +22,7 @@ void Enemy::Initialize()
 void Enemy::Update()
 {
 	transform_.position_.z -= EnemySpeed_;
-	if (transform_.position_.z <= -4.0)
+	if (transform_.position_.z <= -4.5)
 	{
 		KillMe();
 	}
@@ -39,15 +36,4 @@ void Enemy::Draw()
 
 void Enemy::Release()
 {
-}
-
-void Enemy::FirstEnemyPosition(int _xpos)
-{
-	
-	firstpos_ = _xpos;
-}
-
-void Enemy::SetSpeed(float _speed)
-{
-	EnemySpeed_ = _speed;
 }

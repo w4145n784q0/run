@@ -8,6 +8,7 @@ class PlayScene :
     signed int SecondEnemyPos_;
     int ThroughCount_;
     float EnemySpeedSet_;
+    float EnemyInitTime_;
 
 public:
     //コンストラクタ

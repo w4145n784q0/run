@@ -26,10 +26,6 @@ public:
     //ŠJ•ú
     void Release() override;
 
-    //Šî€‚Ì“G‚ÌxÀ•W‚ğ‚Æ‚é
-    void FirstEnemyPosition(int _xpos);
-
-    int GetFirstpos_() { return firstpos_; }
-    void SetSpeed(float _speed);
+    void SetSpeed(float _speed){ EnemySpeed_ = _speed; }
 };
 

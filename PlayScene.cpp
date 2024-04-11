@@ -7,7 +7,8 @@
 
 PlayScene::PlayScene(GameObject* parent)
 	:GameObject(parent, "PlayScene"),inittimer_(0),
-	ThroughCount_(0),EnemySpeedSet_(0.1)
+	ThroughCount_(0),EnemySpeedSet_(0.1),
+	EnemyInitTime_(0.01)
 {
 }
 
@@ -47,7 +48,12 @@ void PlayScene::Update()
 
 		if (ThroughCount_ > 0 && ThroughCount_ % 5 == 0)//5の倍数になったらスピードあげる
 		{
-			EnemySpeedSet_ += 0.05;
+			EnemySpeedSet_ += 0.02;
+		}
+
+		if (ThroughCount_ > 0 && ThroughCount_ % 10 == 0)
+		{
+			EnemyInitTime_ += 0.005;
 		}
 
 		Enemy* pEnemy = Instantiate<Enemy>(this);
@@ -67,7 +73,7 @@ void PlayScene::Update()
 		pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
 	}
 
-	inittimer_ += 0.01;
+	inittimer_ += EnemyInitTime_;
 }
 
 void PlayScene::Draw()
