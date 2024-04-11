@@ -1,7 +1,7 @@
 #include "Timer.h"
 
 Timer::Timer(GameObject* parent)
-	:GameObject(parent, "Timer"),count_(0)
+	:GameObject(parent, "Timer")
 {
 }
 
@@ -20,3 +20,4 @@ void Timer::Draw()
 void Timer::Release()
 {
 }
+

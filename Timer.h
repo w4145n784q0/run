@@ -20,11 +20,5 @@ public:
 
     //開放
     void Release() override;
-
-    //タイマー
-    void TimerCount(float _start,float _end);
-
-    //
-    bool IsTimeOver();
 };
 

@@ -39,6 +39,12 @@ public:
 
     void EnemyInterval();
 
-   // void IntervalandSpeedLimit();
+    /// <summary>
+    /// 一定以上の速度になったら制限かける
+    /// <param name="_Espeed">敵のスピード
+    /// <param name="_EInitTime">敵の出現インターバル
+    /// <param name="_Speedphase">敵のレベルint型で表示してる
+    /// </summary>
+    bool LevelLimit(int _Speedphase);
 };
 

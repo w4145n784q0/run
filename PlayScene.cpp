@@ -7,8 +7,10 @@
 
 PlayScene::PlayScene(GameObject* parent)
 	:GameObject(parent, "PlayScene"),inittimer_(0),
+	StandardEnemyPosX_(0),SecondEnemyPos_(0),
 	ThroughCount_(0),EnemySpeedSet_(0.1),
-	EnemyInitTime_(0.01),pText(nullptr), pText2(nullptr), Speedphase_(1)
+	EnemyInitTime_(0.01),Speedphase_(1),
+	pText(nullptr), pText2(nullptr)
 {
 }
 
@@ -27,9 +29,12 @@ void PlayScene::Update()
 	if (inittimer_ > 1.0)
 	{
 		EnemyPositionSet();
-		EnemySpeedUp();
-		EnemyInterval();
-
+		if (!(LevelLimit(Speedphase_)))
+		{
+			EnemySpeedUp();
+			EnemyInterval();
+		}
+		
 		Enemy* pEnemy = Instantiate<Enemy>(this);
 		pEnemy->SetPosition(StandardEnemyPosX_, 0.5, 10);
 		pEnemy->SetSpeed(EnemySpeedSet_);
@@ -100,7 +105,7 @@ void PlayScene::EnemySpeedUp()
 {
 	if (ThroughCount_ > 0 && ThroughCount_ % 5 == 0)//5の倍数になったらスピードあげる
 	{
-		EnemySpeedSet_ += 0.02;
+		EnemySpeedSet_ += 0.05;
 		Speedphase_ += 1;
 	}
 }
@@ -111,4 +116,12 @@ void PlayScene::EnemyInterval()
 	{
 		EnemyInitTime_ += 0.005;
 	}
+}
+
+bool PlayScene::LevelLimit(int _Speedphase)
+{
+	if (_Speedphase >= 10)
+		return true;
+	else
+		return false;
 }
