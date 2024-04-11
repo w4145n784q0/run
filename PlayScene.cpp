@@ -3,6 +3,7 @@
 #include"Stage.h"
 #include"Enemy.h"
 #include"Engine/Input.h"
+#include"Engine/SceneManager.h"
 
 PlayScene::PlayScene(GameObject* parent)
 	:GameObject(parent, "PlayScene"),inittimer_(0),
@@ -54,6 +55,13 @@ void PlayScene::Update()
 	}
 	
 	inittimer_ += 0.01;
+
+	if (FindObject("Player") == nullptr)
+	{
+		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+		pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
+	}
+
 }
 
 void PlayScene::Draw()

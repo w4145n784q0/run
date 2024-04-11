@@ -15,7 +15,7 @@ void Player::Initialize()
 	assert(hModel_ >= 0);
 	transform_.position_ = XMFLOAT3(0.5,1.0,-2);
 	transform_.scale_ = XMFLOAT3(0.5,0.5,0.5);
-	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), 1.2f);
+	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), 0.3f);
 	AddCollider(collision);
 }
 
@@ -32,7 +32,6 @@ void Player::Update()
 			transform_.position_.x = -1.0;
 		}
 		transform_.position_.x -= 0.1;
-		
 	}
 	/*if (Input::IsKey(DIK_DOWN))
 	{
@@ -44,9 +43,10 @@ void Player::Update()
 		{
 			transform_.position_.x = 1.0;
 		}
-		transform_.position_.x += 0.1;
-		
+		transform_.position_.x += 0.1;	
 	}
+
+
 }
 
 void Player::Draw()
@@ -61,6 +61,6 @@ void Player::Release()
 
 void Player::OnCollision(GameObject* pTarget)
 {
-	//KillMe(); ‚ ‚Æ‚Å
+	KillMe();
 
 }

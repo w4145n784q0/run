@@ -55,14 +55,3 @@ bool TestScene::IsTimeOver()
 	}
 	return false;
 }
-
-
-
-	/*if (EnemyInstantiateTime_ < 0)
-	{
-		EnemyInstantiateTime_ = 2;
-	}
-	else
-	{
-		EnemyInstantiateTime_ -= 1;
-	}*/
