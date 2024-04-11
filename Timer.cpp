@@ -20,15 +20,3 @@ void Timer::Draw()
 void Timer::Release()
 {
 }
-
-void Timer::TimerCount()
-{
-	/*if (count_ > 0)
-	{
-
-	}
-	else
-	{
-		count
-	}*/
-}

@@ -3,7 +3,7 @@
 class Timer :
     public GameObject
 {
-    float count_;
+    bool TimeOver_;
 public:
     //コンストラクタ
     //引数：parent  親オブジェクト（SceneManager）
@@ -22,6 +22,9 @@ public:
     void Release() override;
 
     //タイマー
-    void TimerCount();
+    void TimerCount(float _start,float _end);
+
+    //
+    bool IsTimeOver();
 };
 

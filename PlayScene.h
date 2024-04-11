@@ -32,5 +32,13 @@ public:
     void Release() override;
 
     float GetEnemySpeed() { return EnemySpeedSet_; }
+
+    void EnemyPositionSet();
+
+    void EnemySpeedUp();
+
+    void EnemyInterval();
+
+   // void IntervalandSpeedLimit();
 };
 
