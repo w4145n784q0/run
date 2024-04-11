@@ -1,11 +1,14 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include"PlayScene.h"
+
 class Enemy :
     public GameObject
 {
     int hModel_;
     int firstpos_;
-   // float EnemySpeed_;
+    PlayScene* ps_;
+    float EnemySpeed_;
 public:
     //コンストラクタ
     //引数：parent  親オブジェクト（SceneManager）
@@ -27,6 +30,6 @@ public:
     void FirstEnemyPosition(int _xpos);
 
     int GetFirstpos_() { return firstpos_; }
-   // int ThroughCountUp() { ThroughCount_++; }
+    void SetSpeed(float _speed);
 };
 

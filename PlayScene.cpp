@@ -7,7 +7,7 @@
 
 PlayScene::PlayScene(GameObject* parent)
 	:GameObject(parent, "PlayScene"),inittimer_(0),
-	ThroughCount_(0)
+	ThroughCount_(0),EnemySpeedSet_(0.1)
 {
 }
 
@@ -45,23 +45,29 @@ void PlayScene::Update()
 			break;
 		}
 
+		if (ThroughCount_ > 0 && ThroughCount_ % 5 == 0)//5の倍数になったらスピードあげる
+		{
+			EnemySpeedSet_ += 0.05;
+		}
+
 		Enemy* pEnemy = Instantiate<Enemy>(this);
 		pEnemy->SetPosition(StandardEnemyPosX_, 0.5, 10);
+		pEnemy->SetSpeed(EnemySpeedSet_);
 		Enemy* pEnemy2 = Instantiate<Enemy>(this);
 		pEnemy2->SetPosition(SecondEnemyPos_, 0.5, 10);
+		pEnemy2->SetSpeed(EnemySpeedSet_);
 
 		ThroughCount_++;
 		inittimer_ = 0;
 	}
 	
-	inittimer_ += 0.01;
-
-	if (FindObject("Player") == nullptr)
+	if (FindObject("Player") == nullptr)//Player死亡でシーン遷移
 	{
 		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 		pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
 	}
 
+	inittimer_ += 0.01;
 }
 
 void PlayScene::Draw()
@@ -71,3 +77,4 @@ void PlayScene::Draw()
 void PlayScene::Release()
 {
 }
+

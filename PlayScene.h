@@ -7,6 +7,7 @@ class PlayScene :
     signed int StandardEnemyPosX_;
     signed int SecondEnemyPos_;
     int ThroughCount_;
+    float EnemySpeedSet_;
 
 public:
     //コンストラクタ
@@ -24,5 +25,7 @@ public:
 
     //開放
     void Release() override;
+
+    float GetEnemySpeed() { return EnemySpeedSet_; }
 };
 
