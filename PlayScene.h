@@ -5,13 +5,13 @@
 class PlayScene :
     public GameObject
 {
-    float inittimer_;
-    signed int StandardEnemyPosX_;
-    signed int SecondEnemyPos_;
-    int ThroughCount_;
-    float EnemySpeedSet_;
-    float EnemyInitTime_;
-    int Speedphase_;
+    float inittimer_;//敵発生までのインターバル　1になったら敵が発生
+    signed int StandardEnemyPosX_;//敵の基準位置
+    signed int SecondEnemyPos_;//敵のもう一つの発生位置
+    int ThroughCount_;//避けた回数　敵の発生した回数
+    float EnemySpeedSet_;//敵のスピードを入れる変数
+    float EnemyInitTime_;//inittimerから引く数　避けるたび増える
+    int SpeedLevel_;//現在のレベル　一定回数避けると上がる
     Text* pText;
     Text* pText2;
 public:
