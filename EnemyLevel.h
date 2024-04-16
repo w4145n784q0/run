@@ -10,6 +10,7 @@ class EnemyLevel :
     float EnemySpeedSet_;//敵のスピードを入れる変数
     float EnemyInitTime_;//inittimerから引く数　避けるたび増える
     int SpeedLevel_;//現在のレベル　一定回数避けると上がる
+    float SurvivalTime_;//生存時間を数える
 public:
     //コンストラクタ
    //引数：parent  親オブジェクト（SceneManager）
@@ -31,6 +32,7 @@ public:
     float GetSecondEnemyPosX() { return SecondEnemyPos_; }
     float GetEnemySpeed() { return EnemySpeedSet_; }
     float GetSpeedLevel() { return SpeedLevel_; }
+    float GetSurvivalTime() { return SurvivalTime_; }
 
     void EnemyPositionSet();
 
@@ -47,5 +49,7 @@ public:
     void EnemySetAfter();
 
     bool LevelLimit(int _Speedphase);// 一定以上の速度になったら制限かける
+
+    void SurvivalTimePlus();
 };
 

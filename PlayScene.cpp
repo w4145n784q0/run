@@ -15,7 +15,7 @@ PlayScene::PlayScene(GameObject* parent)
 	:GameObject(parent, "PlayScene"),
 	pText(nullptr), pText2(nullptr),pText3(nullptr),
 	pEL(nullptr), IsGameStart_(false)
-	,pBS_(nullptr),SurvivalTime_(0.0),
+	,pBS_(nullptr),//SurvivalTime_(0.0),
 	hSoundSE_(-1)
 {
 }
@@ -49,7 +49,7 @@ void PlayScene::Update()
 	{
 		if (!(FindObject("Player") == nullptr))
 		{
-			SurvivalTime_ += static_cast<float>(1) / 60;
+			pEL->SurvivalTimePlus();
 		}
 
 		if (pEL->IsEnemyTimeUp())
@@ -74,7 +74,7 @@ void PlayScene::Draw()
 {
 	pText->Draw(160, 30, pEL ->GetSpeedLevel());
 	pText2->Draw(30, 30, "Level: ");
-	pText3->Draw(30, 80, SurvivalTime_);
+	pText3->Draw(30, 80, pEL->GetSurvivalTime());
 }
 
 void PlayScene::Release()

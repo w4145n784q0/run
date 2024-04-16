@@ -13,7 +13,7 @@ class PlayScene :
     EnemyLevel* pEL;
     bool IsGameStart_;
     BeforeStart* pBS_;
-    float SurvivalTime_;
+    
     int hSoundSE_;
 public:
     //コンストラクタ

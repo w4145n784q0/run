@@ -1,9 +1,15 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include "Engine/Text.h"
+#include"EnemyLevel.h"
+
 class GameOverScene :
     public GameObject
 {
     int hImage_;
+    Text* pText;
+    Text* pText2;
+    EnemyLevel* pEL;
 public:
     // コンストラクタ
         //引数：parent  親オブジェクト（SceneManager）
@@ -23,5 +29,6 @@ public:
 
     //開放
     void Release() override;
+
 };
 

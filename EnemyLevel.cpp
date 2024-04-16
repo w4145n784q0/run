@@ -113,3 +113,8 @@ bool EnemyLevel::LevelLimit(int _Speedphase)
 	else
 		return false;
 }
+
+void EnemyLevel::SurvivalTimePlus()
+{
+	SurvivalTime_ += static_cast<float>(1) / 60;
+}
