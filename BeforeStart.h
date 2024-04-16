@@ -1,23 +1,13 @@
 #pragma once
 #include "Engine/GameObject.h"
-#include"Engine/Text.h"
-#include "EnemyLevel.h"
-#include "BeforeStart.h"
-
-class PlayScene :
+class BeforeStart :
     public GameObject
 {
-    Text* pText;
-    Text* pText2;
-    Text* pText3;
-    EnemyLevel* pEL;
-    bool IsGameStart_;
-    BeforeStart* pBS_;
-    float SurvivalTime_;
+   int hImage_;
 public:
     //コンストラクタ
     //引数：parent  親オブジェクト（SceneManager）
-    PlayScene(GameObject* parent);
+    BeforeStart(GameObject* parent);
 
     //初期化
     void Initialize() override;
@@ -31,7 +21,7 @@ public:
     //開放
     void Release() override;
 
-    //敵を出す
-    void EnemySpawn();
+    //画像非表示
+    void HiddenImage();
 };
 

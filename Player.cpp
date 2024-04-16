@@ -1,10 +1,12 @@
 #include "Player.h"
 #include"Engine/Model.h"
 #include"Engine/Input.h"
+#include"Engine/Audio.h"
 #include"Engine/SphereCollider.h"
 
 Player::Player(GameObject* parent)
-	:GameObject(parent,"Player"),hModel_(-1)
+	:GameObject(parent,"Player"),hModel_(-1),
+	hSound_(-1)
 {
 	
 }
@@ -13,6 +15,8 @@ void Player::Initialize()
 {
 	hModel_ = Model::Load("models\\box.fbx");
 	assert(hModel_ >= 0);
+	hSound_ = Audio::Load("Explosion04-1(Short).mp3");
+	assert(hSound_  >= 0);
 	transform_.position_ = XMFLOAT3(0.5,1.0,-2);
 	transform_.scale_ = XMFLOAT3(0.5,0.5,0.5);
 	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), 0.2f);
@@ -52,5 +56,6 @@ void Player::Release()
 
 void Player::OnCollision(GameObject* pTarget)
 {
+	Audio::Play(hSound_);
 	KillMe();
 }

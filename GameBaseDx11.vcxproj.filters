@@ -124,7 +124,10 @@
     <ClCompile Include="TitleScene.cpp">
       <Filter>TitleScene</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyLevel.cpp" />
+    <ClCompile Include="EnemyLevel.cpp">
+      <Filter>PlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="BeforeStart.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -216,7 +219,10 @@
     <ClInclude Include="TitleScene.h">
       <Filter>TitleScene</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyLevel.h" />
+    <ClInclude Include="EnemyLevel.h">
+      <Filter>PlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="BeforeStart.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">
