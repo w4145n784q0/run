@@ -44,8 +44,8 @@ void GameOverScene::Draw()
 {
 	Image::SetTransform(hImage_, transform_);
 	Image::Draw(hImage_);
-	pText->Draw(400, 600, "Survival Time: ");
-	pText2->Draw(800, 600, pEL->GetSurvivalTime() );
+	/*pText->Draw(400, 600, "Survival Time: ");
+	pText2->Draw(800, 600, pEL->GetSurvivalTime() );*/
 }
 
 void GameOverScene::Release()
