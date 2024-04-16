@@ -14,6 +14,7 @@ class PlayScene :
     bool IsGameStart_;
     BeforeStart* pBS_;
     float SurvivalTime_;
+    int hSoundSE_;
 public:
     //コンストラクタ
     //引数：parent  親オブジェクト（SceneManager）

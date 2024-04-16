@@ -15,7 +15,7 @@ void Player::Initialize()
 {
 	hModel_ = Model::Load("models\\box.fbx");
 	assert(hModel_ >= 0);
-	hSound_ = Audio::Load("Explosion04-1(Short).mp3");
+	hSound_ = Audio::Load("Sound\\maou_se_battle_explosion06.wav");
 	assert(hSound_  >= 0);
 	transform_.position_ = XMFLOAT3(0.5,1.0,-2);
 	transform_.scale_ = XMFLOAT3(0.5,0.5,0.5);

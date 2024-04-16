@@ -6,13 +6,17 @@
 #include"BeforeStart.h"
 #include"Engine/Input.h"
 #include"Engine/Image.h"
+#include"Engine/Audio.h"
 #include"Engine/SceneManager.h"
+#include<chrono>
+#include<thread>
 
 PlayScene::PlayScene(GameObject* parent)
 	:GameObject(parent, "PlayScene"),
 	pText(nullptr), pText2(nullptr),pText3(nullptr),
 	pEL(nullptr), IsGameStart_(false)
-	,pBS_(nullptr),SurvivalTime_(0.0)
+	,pBS_(nullptr),SurvivalTime_(0.0),
+	hSoundSE_(-1)
 {
 }
 
@@ -28,12 +32,15 @@ void PlayScene::Initialize()
 	pText3->Initialize();
 	pEL = Instantiate<EnemyLevel>(this);//(EnemyLevel*)FindObject("EnemyLevel");
 	pBS_ = Instantiate<BeforeStart>(this);
+	hSoundSE_ = Audio::Load("Sound\\maou_se_sound_whistle01.wav");
+	assert(hSoundSE_ >= 0);
 }
 
 void PlayScene::Update()
 {
 	if (IsGameStart_ == false && Input::IsKeyDown(DIK_SPACE))
 	{
+		Audio::Play(hSoundSE_);
 		IsGameStart_ = true;
 		pBS_->HiddenImage();
 	}
@@ -54,6 +61,7 @@ void PlayScene::Update()
 
 		if (FindObject("Player") == nullptr)//PlayerŽ€–S‚ÅƒV[ƒ“‘JˆÚ
 		{
+			std::this_thread::sleep_for(std::chrono::seconds(1));
 			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
 		}
