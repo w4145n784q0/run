@@ -47,11 +47,13 @@ void PlayScene::Update()
 
 	if (IsGameStart_)
 	{
+		//©‹@‚ª¶‘¶‚µ‚Ä‚¢‚éŠÔŠÔ‚ğ”‚¦‚é
 		if (!(FindObject("Player") == nullptr))
 		{
 			pEL->SurvivalTimePlus();
 		}
 
+		//ˆê’èŠÔŠu‚Å“G‚ğo‚·
 		if (pEL->IsEnemyTimeUp())
 		{
 			pEL->PosSetAndLevelUp();
@@ -59,7 +61,8 @@ void PlayScene::Update()
 			pEL->EnemySetAfter();
 		}
 
-		if (FindObject("Player") == nullptr)//Player€–S‚ÅƒV[ƒ“‘JˆÚ
+		//Player€–S‚ÅƒV[ƒ“‘JˆÚ
+		if (FindObject("Player") == nullptr)
 		{
 			std::this_thread::sleep_for(std::chrono::seconds(1));
 			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");

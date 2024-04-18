@@ -34,22 +34,31 @@ public:
     float GetSpeedLevel() { return SpeedLevel_; }
     float GetSurvivalTime() { return SurvivalTime_; }
 
+    //敵の位置を決める
     void EnemyPositionSet();
 
+    //敵の速度上昇
     void EnemySpeedUp();
 
+    //敵の出現間隔上昇
     void EnemyInterval();
-
+    
+    //敵の出現間隔カウント
     void EnemyTimeCount();
 
+    //敵を出すか出さないか（敵を出す時間になったか）
     bool IsEnemyTimeUp();
 
+    //敵の位置を決め、レベル10以下なら速度や間隔をあげる
     void PosSetAndLevelUp();
 
+    //敵を出した後の処理（タイマーを0にする、避けた回数を上げる）
     void EnemySetAfter();
 
-    bool LevelLimit(int _Speedphase);// 一定以上の速度になったら制限かける
+    // 一定以上の速度になったら制限かける
+    bool LevelLimit(int _Speedphase);
 
+    //常に1/60プラスして、生存時間としてカウント
     void SurvivalTimePlus();
 };
 
