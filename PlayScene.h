@@ -3,6 +3,7 @@
 #include"Engine/Text.h"
 #include "EnemyLevel.h"
 #include "BeforeStart.h"
+#include"GroundObject.h"
 
 class PlayScene :
     public GameObject
@@ -13,7 +14,7 @@ class PlayScene :
     EnemyLevel* pEL;
     bool IsGameStart_;
     BeforeStart* pBS_;
-    
+   // GroundObject* pGO_;
     int hSoundSE_;
 public:
     //コンストラクタ

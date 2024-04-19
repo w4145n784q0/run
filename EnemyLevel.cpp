@@ -5,7 +5,8 @@ EnemyLevel::EnemyLevel(GameObject* parent)
 	 inittimer_(0),
 	StandardEnemyPosX_(0), SecondEnemyPos_(0),
 	ThroughCount_(0), EnemySpeedSet_(0.1),
-	EnemyInitTime_(0.01), SpeedLevel_(1)
+	EnemyInitTime_(0.01), SpeedLevel_(1),
+	SurvivalTime_(0)
 {
 }
 

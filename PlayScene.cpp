@@ -4,6 +4,7 @@
 #include"Enemy.h"
 #include"EnemyLevel.h"
 #include"BeforeStart.h"
+#include"GroundObject.h"
 #include"Engine/Input.h"
 #include"Engine/Image.h"
 #include"Engine/Audio.h"
@@ -15,8 +16,8 @@ PlayScene::PlayScene(GameObject* parent)
 	:GameObject(parent, "PlayScene"),
 	pText(nullptr), pText2(nullptr),pText3(nullptr),
 	pEL(nullptr), IsGameStart_(false)
-	,pBS_(nullptr),//SurvivalTime_(0.0),
-	hSoundSE_(-1)
+	,pBS_(nullptr),hSoundSE_(-1)
+	
 {
 }
 
@@ -32,6 +33,7 @@ void PlayScene::Initialize()
 	pText3->Initialize();
 	pEL = Instantiate<EnemyLevel>(this);//(EnemyLevel*)FindObject("EnemyLevel");
 	pBS_ = Instantiate<BeforeStart>(this);
+	//pGO_ = Instantiate<GroundObject>(this);
 	hSoundSE_ = Audio::Load("Sound\\maou_se_sound_whistle01.wav");
 	assert(hSoundSE_ >= 0);
 }
@@ -47,6 +49,15 @@ void PlayScene::Update()
 
 	if (IsGameStart_)
 	{
+		//木のオブジェクト出す
+		if (pEL->IsEnemyTimeUp())
+		{
+			GroundObject* pGO = Instantiate<GroundObject>(this);
+			pGO->SetPosition(3, 0, 10);
+			GroundObject* pGO2 = Instantiate<GroundObject>(this);
+			pGO2->SetPosition(-3, 0, 10);
+		}
+
 		//自機が生存している間時間を数える
 		if (!(FindObject("Player") == nullptr))
 		{
