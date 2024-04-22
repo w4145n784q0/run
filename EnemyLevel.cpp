@@ -4,7 +4,7 @@ EnemyLevel::EnemyLevel(GameObject* parent)
 	:GameObject(parent, "EnemyLevel"), 
 	 inittimer_(0),
 	StandardEnemyPosX_(0), SecondEnemyPos_(0),
-	ThroughCount_(0), EnemySpeedSet_(0.1),
+	ThroughCount_(0), EnemySpeedSet_(0.2),
 	EnemyInitTime_(0.01), SpeedLevel_(1),
 	SurvivalTime_(0)
 {
