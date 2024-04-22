@@ -44,16 +44,6 @@ void Player::Update()
 		}
 		transform_.position_.x += 0.1;	
 	}
-
-	if (Input::IsKey(DIK_UP))
-	{
-		transform_.position_.z += 0.1;
-	}
-	if (Input::IsKey(DIK_DOWN))
-	{
-		transform_.position_.z -= 0.1;
-	}
-
 }
 
 void Player::Draw()
