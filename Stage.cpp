@@ -10,8 +10,9 @@ Stage::Stage(GameObject* parent)
 void Stage::Initialize()
 {
 	hModel_ = Model::Load("models\\road5.fbx");
+	//hModel_ = Model::Load("models\\road_2.fbx");
 	assert(hModel_ >= 0); 
-	transform_.position_ = XMFLOAT3(0, 0, 0);
+	transform_.position_ = XMFLOAT3(0, 0, 10);
 	Camera::SetPosition(XMFLOAT3(0, 5, -8));
 	Camera::SetTarget(XMFLOAT3(0, 2, 0));
 }

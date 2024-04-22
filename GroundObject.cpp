@@ -3,7 +3,7 @@
 
 GroundObject::GroundObject(GameObject* parent)
 	:GameObject(parent,"GameObject"),hModel_(-1),
-	ObjectSpeed_(0.05),inittimer_(0.0),
+	ObjectSpeed_(0.2),inittimer_(0.0),
 	ObjectInitTime_(0.01)
 {
 }
@@ -12,7 +12,7 @@ void GroundObject::Initialize()
 {
 	hModel_ = Model::Load("models\\tree.fbx");
 	assert(hModel_ >= 0);
-	transform_.scale_ = { 0.5,0.5,0.5 };
+	transform_.scale_ = { 0.3,0.3,0.3 };
 }
 
 void GroundObject::Update()

@@ -65,7 +65,7 @@ void EnemyLevel::EnemySpeedUp()
 {
 	if (ThroughCount_ > 0 && ThroughCount_ % 5 == 0)//5の倍数になったらスピードあげる
 	{
-		EnemySpeedSet_ += 0.025;
+		EnemySpeedSet_ += 0.05;
 		SpeedLevel_ += 1;
 	}
 }

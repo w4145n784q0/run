@@ -16,6 +16,8 @@ class PlayScene :
     BeforeStart* pBS_;
    // GroundObject* pGO_;
     int hSoundSE_;
+    float inittime_;
+    float ObjectInitTime_;
 public:
     //コンストラクタ
     //引数：parent  親オブジェクト（SceneManager）

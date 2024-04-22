@@ -5,6 +5,7 @@
 #include"EnemyLevel.h"
 #include"BeforeStart.h"
 #include"GroundObject.h"
+#include"StageSide.h"
 #include"Engine/Input.h"
 #include"Engine/Image.h"
 #include"Engine/Audio.h"
@@ -16,7 +17,8 @@ PlayScene::PlayScene(GameObject* parent)
 	:GameObject(parent, "PlayScene"),
 	pText(nullptr), pText2(nullptr),pText3(nullptr),
 	pEL(nullptr), IsGameStart_(false)
-	,pBS_(nullptr),hSoundSE_(-1)
+	,pBS_(nullptr),hSoundSE_(-1),inittime_(0.0),
+	ObjectInitTime_(0.01)
 	
 {
 }
@@ -25,6 +27,11 @@ void PlayScene::Initialize()
 {
 	Instantiate<Player>(this);
 	Instantiate<Stage>(this);
+	StageSide* pSS_ =  Instantiate<StageSide>(this);
+	pSS_->SetPosition(-2, 0, 10);
+	StageSide* pSS2_ = Instantiate<StageSide>(this);
+	pSS2_->SetPosition(2, 0, 10);
+
 	pText = new Text;
 	pText->Initialize();
 	pText2 = new Text;
@@ -33,7 +40,6 @@ void PlayScene::Initialize()
 	pText3->Initialize();
 	pEL = Instantiate<EnemyLevel>(this);//(EnemyLevel*)FindObject("EnemyLevel");
 	pBS_ = Instantiate<BeforeStart>(this);
-	//pGO_ = Instantiate<GroundObject>(this);
 	hSoundSE_ = Audio::Load("Sound\\maou_se_sound_whistle01.wav");
 	assert(hSoundSE_ >= 0);
 }
@@ -50,12 +56,13 @@ void PlayScene::Update()
 	if (IsGameStart_)
 	{
 		//木のオブジェクト出す
-		if (pEL->IsEnemyTimeUp())
+		if (inittime_ > 1.0)
 		{
 			GroundObject* pGO = Instantiate<GroundObject>(this);
-			pGO->SetPosition(3, 0, 10);
+			pGO->SetPosition(2, 1, 20);
 			GroundObject* pGO2 = Instantiate<GroundObject>(this);
-			pGO2->SetPosition(-3, 0, 10);
+			pGO2->SetPosition(-2, 1, 20);
+			inittime_ = 0;
 		}
 
 		//自機が生存している間時間を数える
@@ -81,6 +88,7 @@ void PlayScene::Update()
 		}
 
 		pEL->EnemyTimeCount();
+		inittime_ += ObjectInitTime_;
 	}
 }
 
@@ -99,9 +107,9 @@ void PlayScene::Release()
 void PlayScene::EnemySpawn()
 {
 	Enemy* pEnemy = Instantiate<Enemy>(this);
-	pEnemy->SetPosition(pEL->GetStandardEnemyPosX(), 0.5, 10);
+	pEnemy->SetPosition(pEL->GetStandardEnemyPosX(), 0.5, 20);
 	pEnemy->SetSpeed(pEL->GetEnemySpeed());
 	Enemy* pEnemy2 = Instantiate<Enemy>(this);
-	pEnemy2->SetPosition(pEL->GetSecondEnemyPosX(), 0.5, 10);
+	pEnemy2->SetPosition(pEL->GetSecondEnemyPosX(), 0.5, 20);
 	pEnemy2->SetSpeed(pEL->GetEnemySpeed());
 }

@@ -129,7 +129,12 @@
     <ClCompile Include="BeforeStart.cpp">
       <Filter>PlayScene</Filter>
     </ClCompile>
-    <ClCompile Include="GroundObject.cpp" />
+    <ClCompile Include="GroundObject.cpp">
+      <Filter>PlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="StageSide.cpp">
+      <Filter>PlayScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -226,7 +231,12 @@
     <ClInclude Include="BeforeStart.h">
       <Filter>PlayScene</Filter>
     </ClInclude>
-    <ClInclude Include="GroundObject.h" />
+    <ClInclude Include="GroundObject.h">
+      <Filter>PlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="StageSide.h">
+      <Filter>PlayScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">
