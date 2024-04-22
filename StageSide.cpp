@@ -7,7 +7,7 @@ StageSide::StageSide(GameObject* parent)
 
 void StageSide::Initialize()
 {
-	hModel_ = Model::Load("models\\road_3.fbx");
+	hModel_ = Model::Load("models\\road_side.fbx");
 	assert(hModel_ >= 0);
 }
 
