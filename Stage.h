@@ -4,7 +4,6 @@ class Stage :
     public GameObject
 {
     int hModel_;
-    int hModel2_;
 public:
     //コンストラクタ
     //引数：parent  親オブジェクト（SceneManager）

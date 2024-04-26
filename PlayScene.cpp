@@ -9,6 +9,7 @@
 #include"Engine/Input.h"
 #include"Engine/Image.h"
 #include"Engine/Audio.h"
+#include"Engine/Camera.h"
 #include"Engine/SceneManager.h"
 #include<chrono>
 #include<thread>
@@ -46,6 +47,9 @@ void PlayScene::Initialize()
 
 void PlayScene::Update()
 {
+	//bool IsGoGameOver = false;
+	int i = 0;
+
 	if (IsGameStart_ == false && Input::IsKeyDown(DIK_SPACE))
 	{
 		Audio::Play(hSoundSE_);
@@ -82,6 +86,18 @@ void PlayScene::Update()
 		//PlayeréÄñSÇ≈ÉVÅ[ÉìëJà⁄
 		if (FindObject("Player") == nullptr)
 		{
+			float init = 0.0;
+			float nextscene = 0.3;
+			int j = rand() % 10 + 1;
+			
+			while (init <= 1)
+			{
+				//Camera::SetPosition(XMFLOAT3(0, j, -6));
+				Camera::SetTarget(XMFLOAT3(0, j, 0));
+				init += nextscene;
+				if (init >= 1.1)
+					break;
+			}
 			std::this_thread::sleep_for(std::chrono::seconds(1));
 			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
@@ -113,3 +129,4 @@ void PlayScene::EnemySpawn()
 	pEnemy2->SetPosition(pEL->GetSecondEnemyPosX(), 0.5, 20);
 	pEnemy2->SetSpeed(pEL->GetEnemySpeed());
 }
+

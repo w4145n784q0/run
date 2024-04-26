@@ -2,7 +2,10 @@
 #include"Engine/Model.h"
 #include"Engine/Input.h"
 #include"Engine/Audio.h"
+#include"Engine/Camera.h"
 #include"Engine/SphereCollider.h"
+#include<chrono>
+#include<thread>
 
 Player::Player(GameObject* parent)
 	:GameObject(parent,"Player"),hModel_(-1),
@@ -59,5 +62,8 @@ void Player::Release()
 void Player::OnCollision(GameObject* pTarget)
 {
 	Audio::Play(hSound_);
+
+	/*Camera::SetPosition(XMFLOAT3(0, 3, -6));
+	Camera::SetTarget(XMFLOAT3(0, 2, 0));*/
 	KillMe();
 }

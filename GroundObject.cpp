@@ -36,7 +36,6 @@ void GroundObject::Release()
 
 void GroundObject::ObjectPositionSet()
 {
-	//int i = rand() % 2;
 	if (rand() % 2 == 0)
 	{
 		PosX_ = 2;

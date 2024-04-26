@@ -4,7 +4,13 @@ class Player :
     public GameObject
 {
     int hModel_;
-    int hSound_;//
+    int hSound_;
+    struct Shake 
+    {
+        float Shaketime_;
+        float ShakeStrength_;
+        float ShakeTime_;
+    };
 public:
     //コンストラクタ
     //引数：parent  親オブジェクト（SceneManager）
@@ -25,5 +31,7 @@ public:
     //何かに当たった
     //引数：pTarget 当たった相手
     void OnCollision(GameObject* pTarget) override;
+
+    //void shakeCamera();
 };
 
