@@ -11,15 +11,15 @@ class PlayScene :
     Text* pText;
     Text* pText2;
     Text* pText3;
+    Text* pText4;
     EnemyLevel* pEL;
     bool IsGameStart_;
     BeforeStart* pBS_;
-   // GroundObject* pGO_;
     int hSoundSE_;
-    float inittime_;
-    float ObjectInitTime_;
-    int ShakeCount_;
-    bool IsShakeEnd_;
+    float inittime_;//オブジェクト発生までのインターバル　1になったら敵が発生
+    float ObjectInitTime_;//オブジェクトの生成までの時間　inittimerから引く数　
+    int ShakeCount_;//振動したカウント
+    bool IsShakeEnd_;//振動終わったか
 public:
     //コンストラクタ
     //引数：parent  親オブジェクト（SceneManager）

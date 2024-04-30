@@ -18,7 +18,6 @@ void Player::Initialize()
 {
 //Animated Characters 2\\Model\\characterMedium.fbx
 	hModel_ = Model::Load("models\\ambulance_2.fbx");
-	//hModel_ = Model::Load("models\\box.fbx");
 	assert(hModel_ >= 0);
 	hSound_ = Audio::Load("Sound\\maou_se_battle_explosion06.wav");
 	assert(hSound_  >= 0);

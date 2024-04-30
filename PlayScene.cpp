@@ -11,12 +11,10 @@
 #include"Engine/Audio.h"
 #include"Engine/Camera.h"
 #include"Engine/SceneManager.h"
-#include<chrono>
-#include<thread>
 
 PlayScene::PlayScene(GameObject* parent)
 	:GameObject(parent, "PlayScene"),
-	pText(nullptr), pText2(nullptr),pText3(nullptr),
+	pText(nullptr), pText2(nullptr),pText3(nullptr),pText4(nullptr),
 	pEL(nullptr), IsGameStart_(false)
 	,pBS_(nullptr),hSoundSE_(-1),inittime_(0.0),
 	ObjectInitTime_(0.01),IsShakeEnd_(false), ShakeCount_(0)
@@ -39,6 +37,8 @@ void PlayScene::Initialize()
 	pText2->Initialize();
 	pText3 = new Text;
 	pText3->Initialize();
+	pText4 = new Text;
+	pText4->Initialize();
 	pEL = Instantiate<EnemyLevel>(this);//(EnemyLevel*)FindObject("EnemyLevel");
 	pBS_ = Instantiate<BeforeStart>(this);
 	hSoundSE_ = Audio::Load("Sound\\maou_se_sound_whistle01.wav");
@@ -47,7 +47,6 @@ void PlayScene::Initialize()
 
 void PlayScene::Update()
 {
-	//bool IsGoGameOver = false;
 	int i = 0;
 
 	if (IsGameStart_ == false && Input::IsKeyDown(DIK_SPACE))
@@ -96,6 +95,7 @@ void PlayScene::Update()
 					Camera::SetPosition(XMFLOAT3(0, j, -6));
 					Camera::SetTarget(XMFLOAT3(0, i, 0));
 				}
+				}
 			}
 			
 			//Camera::SetPosition(XMFLOAT3(0, j, -6));
@@ -104,7 +104,6 @@ void PlayScene::Update()
 			{
 				Camera::SetPosition(XMFLOAT3(0, 3, -6));
 				Camera::SetTarget(XMFLOAT3(0, 2, 0));
-				
 			}
 
 			if (ShakeCount_ >= 60)
@@ -112,13 +111,10 @@ void PlayScene::Update()
 				IsShakeEnd_ = true;
 			}
 
-
 			if(IsShakeEnd_)
 			{
-				
 				SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 				pSceneManager->ChangeScene(SCENE_ID_GAMEOVER); 
-				//std::this_thread::sleep_for(std::chrono::seconds(1));
 			}
 		}
 
@@ -131,7 +127,8 @@ void PlayScene::Draw()
 {
 	pText->Draw(160, 30, pEL ->GetSpeedLevel());
 	pText2->Draw(30, 30, "Level: ");
-	pText3->Draw(30, 80, pEL->GetSurvivalTime());
+	pText3->Draw(160, 80, pEL->GetSurvivalTime());
+	pText4->Draw(30, 80, "Time: ");
 }
 
 void PlayScene::Release()
