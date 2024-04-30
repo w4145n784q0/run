@@ -19,7 +19,7 @@ PlayScene::PlayScene(GameObject* parent)
 	pText(nullptr), pText2(nullptr),pText3(nullptr),
 	pEL(nullptr), IsGameStart_(false)
 	,pBS_(nullptr),hSoundSE_(-1),inittime_(0.0),
-	ObjectInitTime_(0.01)
+	ObjectInitTime_(0.01),IsShakeEnd_(false), ShakeCount_(0)
 	
 {
 }
@@ -86,21 +86,40 @@ void PlayScene::Update()
 		//PlayeréÄñSÇ≈ÉVÅ[ÉìëJà⁄
 		if (FindObject("Player") == nullptr)
 		{
-			float init = 0.0;
-			float nextscene = 0.3;
-			int j = rand() % 10 + 1;
-			
-			while (init <= 1)
+			if (ShakeCount_ < 60)//if(!IsShakeEnd_ && ShakeCount_ < 30)
 			{
-				//Camera::SetPosition(XMFLOAT3(0, j, -6));
-				Camera::SetTarget(XMFLOAT3(0, j, 0));
-				init += nextscene;
-				if (init >= 1.1)
-					break;
+				ShakeCount_++;
+				if (!IsShakeEnd_ && ShakeCount_ < 30)
+				{ 
+					int j = rand() % 2 + 1;
+					int i = j + 1;
+					Camera::SetPosition(XMFLOAT3(0, j, -6));
+					Camera::SetTarget(XMFLOAT3(0, i, 0));
+				}
 			}
-			std::this_thread::sleep_for(std::chrono::seconds(1));
-			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-			pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
+			
+			//Camera::SetPosition(XMFLOAT3(0, j, -6));
+			
+			if (ShakeCount_ >= 30)
+			{
+				Camera::SetPosition(XMFLOAT3(0, 3, -6));
+				Camera::SetTarget(XMFLOAT3(0, 2, 0));
+				
+			}
+
+			if (ShakeCount_ >= 60)
+			{
+				IsShakeEnd_ = true;
+			}
+
+
+			if(IsShakeEnd_)
+			{
+				
+				SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+				pSceneManager->ChangeScene(SCENE_ID_GAMEOVER); 
+				//std::this_thread::sleep_for(std::chrono::seconds(1));
+			}
 		}
 
 		pEL->EnemyTimeCount();

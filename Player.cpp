@@ -22,7 +22,7 @@ void Player::Initialize()
 	assert(hModel_ >= 0);
 	hSound_ = Audio::Load("Sound\\maou_se_battle_explosion06.wav");
 	assert(hSound_  >= 0);
-	transform_.position_ = XMFLOAT3(0.5,1.0,-2);
+	transform_.position_ = XMFLOAT3(0,1.0,-2);
 	transform_.scale_ = XMFLOAT3(0.005,0.005,0.005);
 	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), 0.2f);
 	AddCollider(collision);

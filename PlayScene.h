@@ -18,6 +18,8 @@ class PlayScene :
     int hSoundSE_;
     float inittime_;
     float ObjectInitTime_;
+    int ShakeCount_;
+    bool IsShakeEnd_;
 public:
     //コンストラクタ
     //引数：parent  親オブジェクト（SceneManager）
