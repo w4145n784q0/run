@@ -4,7 +4,7 @@
 GroundObject::GroundObject(GameObject* parent)
 	:GameObject(parent,"GameObject"),hModel_(-1),
 	ObjectSpeed_(0.2),inittimer_(0.0),
-	ObjectInitTime_(0.01)
+	ObjectInitTime_(0.01),PosX_(0)
 {
 }
 

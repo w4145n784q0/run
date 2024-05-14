@@ -20,6 +20,7 @@ class PlayScene :
     float ObjectInitTime_;//オブジェクトの生成までの時間　inittimerから引く数　
     int ShakeCount_;//振動したカウント
     bool IsShakeEnd_;//振動終わったか
+
 public:
     //コンストラクタ
     //引数：parent  親オブジェクト（SceneManager）

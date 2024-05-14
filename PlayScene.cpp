@@ -17,7 +17,7 @@ PlayScene::PlayScene(GameObject* parent)
 	pText(nullptr), pText2(nullptr),pText3(nullptr),pText4(nullptr),
 	pEL(nullptr), IsGameStart_(false)
 	,pBS_(nullptr),hSoundSE_(-1),inittime_(0.0),
-	ObjectInitTime_(0.01),IsShakeEnd_(false), ShakeCount_(0)
+	ObjectInitTime_(0.03),IsShakeEnd_(false), ShakeCount_(0)
 	
 {
 }
@@ -43,11 +43,13 @@ void PlayScene::Initialize()
 	pBS_ = Instantiate<BeforeStart>(this);
 	hSoundSE_ = Audio::Load("Sound\\maou_se_sound_whistle01.wav");
 	assert(hSoundSE_ >= 0);
+
+	Camera::SetPosition(XMFLOAT3(0, 3, -6));
+	Camera::SetTarget(XMFLOAT3(0, 2, 0));
 }
 
 void PlayScene::Update()
 {
-	int i = 0;
 
 	if (IsGameStart_ == false && Input::IsKeyDown(DIK_SPACE))
 	{
@@ -89,16 +91,12 @@ void PlayScene::Update()
 			{
 				ShakeCount_++;
 				if (!IsShakeEnd_ && ShakeCount_ < 30)
-				{ 
-					int j = rand() % 2 + 1;
-					int i = j + 1;
+				{
+					float j = rand() % 2 + 1;
 					Camera::SetPosition(XMFLOAT3(0, j, -6));
-					Camera::SetTarget(XMFLOAT3(0, i, 0));
-				}
+					Camera::SetTarget(XMFLOAT3(0, j, 0));
 				}
 			}
-			
-			//Camera::SetPosition(XMFLOAT3(0, j, -6));
 			
 			if (ShakeCount_ >= 30)
 			{
@@ -128,7 +126,7 @@ void PlayScene::Draw()
 	pText->Draw(160, 30, pEL ->GetSpeedLevel());
 	pText2->Draw(30, 30, "Level: ");
 	pText3->Draw(160, 80, pEL->GetSurvivalTime());
-	pText4->Draw(30, 80, "Time: ");
+	pText4->Draw(30, 80, "Time : ");
 }
 
 void PlayScene::Release()
