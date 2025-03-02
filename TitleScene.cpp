@@ -14,7 +14,7 @@ TitleScene::~TitleScene()
 
 void TitleScene::Initialize()
 {
-	hImage_ = Image::Load("PacMaso2Title.png");
+	hImage_ = Image::Load("title.png");
 	assert(hImage_ >= 0);
 }
 

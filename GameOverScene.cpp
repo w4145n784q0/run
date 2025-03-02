@@ -16,7 +16,7 @@ GameOverScene::~GameOverScene()
 
 void GameOverScene::Initialize()
 {
-	hImage_ = Image::Load("PacMasoYouDead.png");
+	hImage_ = Image::Load("gameover.png");
 	assert(hImage_ >= 0);
 	pText = new Text;
 	pText->Initialize();
